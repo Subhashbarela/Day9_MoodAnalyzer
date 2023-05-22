@@ -40,5 +40,20 @@ namespace MoodAnalyzerNUnitTest
             Assert.That(result, Is.EqualTo("Happy"));
             Console.WriteLine(result);
         }
+        // TC2.1-Given Null Mood Should Return Happy
+        [Test]
+        public void Return_Happy_If_Null_Input()
+        {
+            try
+            {
+                MoodAnalyzerClass moodAnalyzer = new MoodAnalyzerClass("");
+                string result = moodAnalyzer.AnalyseMood();
+                Console.WriteLine(result);
+            }
+            catch (NullReferenceException e)
+            {
+                Assert.That(e.Message, Is.EqualTo("Happy"));
+            }
+        }
     }
 }

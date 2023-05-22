@@ -30,6 +30,10 @@ namespace Day9_MoodAnalyzerProject
         }
         public string AnalyseMood()
         {
+            if (message.Equals(null))
+            {
+                throw new NullReferenceException("happy");
+            }
             if (message.Contains("Sad"))
             {
                 return "Sad";
@@ -39,5 +43,13 @@ namespace Day9_MoodAnalyzerProject
                 return "Happy";
             }
         }
+        //public string AnalyseMood()
+        //{
+        //    if (message.Equals(null))
+        //    {
+        //        throw new NullReferenceException("happy");                
+        //    }
+        //    return "Happy";
+        //}
     }
 }
