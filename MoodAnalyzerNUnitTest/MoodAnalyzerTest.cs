@@ -55,5 +55,34 @@ namespace MoodAnalyzerNUnitTest
                 Assert.That(e.Message, Is.EqualTo("Happy"));
             }
         }
+        // TC3.1-Given NULL Mood Should Throw MoodAnalysisException
+        [Test]
+        public void Null_Return_Using_Custom_Exception()
+        {
+            MoodAnalyzerClass moodAnalyzer = new MoodAnalyzerClass(null);
+            try
+            {
+                string result = moodAnalyzer.AnalyseMood();               
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual("Null Input", e.Message);
+            }
+        }
+        // TC3.2-Given Empty Mood Should Throw MoodAnalysisException indicating Empty Mood
+        [Test]
+        public void Return_Empty_Using_Custom_Exception()
+        {
+            MoodAnalyzerClass moodAnalyzer = new MoodAnalyzerClass(message: "");
+            try
+            {
+                string result = moodAnalyzer.AnalyseMood();
+                //  Assert.That(result, Is.EqualTo("Happy"));
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual("Empty Input", e.Message);
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Day9_MoodAnalyzerProject.MoodAnalyserException;
 
 namespace Day9_MoodAnalyzerProject
 {
@@ -28,28 +29,29 @@ namespace Day9_MoodAnalyzerProject
                 return "Happy";
             }
         }
+       
         public string AnalyseMood()
         {
-            if (message.Equals(null))
+            if (message.Equals(string.Empty))
             {
-                throw new NullReferenceException("happy");
+                throw new MoodAnalyserException(MoodAnalyseEnum.EMPTY_MOOD, "Empty Input");
             }
-            if (message.Contains("Sad"))
+            try
             {
-                return "Sad";
+                if (message.Contains("Sad"))
+                {
+                    return "Sad";
+                }
+                else
+                {
+                    return "Happy";
+                }
             }
-            else
+            catch (NullReferenceException e)
             {
-                return "Happy";
+                throw new MoodAnalyserException(MoodAnalyseEnum.NULL_MOOD, "Null Input");
             }
+
         }
-        //public string AnalyseMood()
-        //{
-        //    if (message.Equals(null))
-        //    {
-        //        throw new NullReferenceException("happy");                
-        //    }
-        //    return "Happy";
-        //}
     }
 }
