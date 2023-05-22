@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Day9_MoodAnalyzerProject
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("welcome to Day9 Project");
         }
     }
 }
